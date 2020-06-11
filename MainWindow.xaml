@@ -1,0 +1,659 @@
+﻿<Window
+    x:Class="Feedback.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Feedback"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Title="Обратная связь"
+    Width="910"
+    Height="650"
+    MinWidth="850"
+    MinHeight="650"
+    Icon="Resources/tick.png"
+    ResizeMode="NoResize"
+    TextOptions.TextFormattingMode="Display"
+    TextOptions.TextRenderingMode="ClearType"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid>
+        <!--  ФОН  -->
+        <Image Source="Resources/Background.jpg" Stretch="UniformToFill" />
+
+        <!--  КНОПКА СВЕРНУТЬ  -->
+        <Button
+            x:Name="Min"
+            Margin="0,10,49,0"
+            Click="MinButton_Click"
+            Style="{StaticResource VS2012WindowStyleTitleBarButton}">
+            <Grid MaxWidth="9" MaxHeight="9">
+                <Path Data="M0,8 H8 M0,7 H8 M0,6 H8" />
+            </Grid>
+        </Button>
+
+        <!--  КНОПКА ЗАКРЫТЬ  -->
+        <Button
+            x:Name="Close"
+            Margin="0,10,10,0"
+            Click="CloseButton_Click"
+            Style="{StaticResource VS2012WindowStyleTitleBarButton}">
+            <Grid MaxWidth="9" MaxHeight="9">
+                <Path Data="M0,0 L8,8 M0,8 L8,0" />
+            </Grid>
+        </Button>
+
+        <!--  ОСНОВНОЙ КОНТЕНТ  -->
+        <DockPanel>
+            <!--  КОНТАКТЫ  -->
+            <Grid Style="{StaticResource Contacts}">
+                <!--  Прозрачная подложка  -->
+                <Grid.Background>
+                    <SolidColorBrush Opacity="0.5" Color="White" />
+                </Grid.Background>
+
+                <!--  Верхний отступ  -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85*" />
+                    <RowDefinition Height="533*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--  Заголовок - Контакты  -->
+                <local:OutlinedTextBlock
+                    Fill="Black"
+                    Stroke="White"
+                    Text="КОНТАКТЫ" />
+
+                <!--  Тело - Набор контактов  -->
+                <!-- <ScrollViewer IsTabStop="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed"> -->
+                <DockPanel Grid.Row="1">
+                    <!--  Удостоверяющий центр ФЦИИТ  -->
+                    <Grid Style="{StaticResource Contact_block}">
+                        <TextBlock x:Name="First_block" Style="{StaticResource Contact_heading}">
+                            <Image x:Name="First_block_img" Style="{StaticResource Indicator}" />
+                            ФЦИИТ<LineBreak />
+
+                            <TextBlock Style="{StaticResource Contact_phones}">
+                                8 (800) 250-01-33, +7 (495) 730-57-05<LineBreak />
+
+                                <TextBlock>support@fciit.ru</TextBlock>
+                            </TextBlock>
+                        </TextBlock>
+                    </Grid>
+
+                    <!--  Росреестр  -->
+                    <Grid Style="{StaticResource Contact_block}">
+                        <TextBlock Style="{StaticResource Contact_heading}">
+                            <Image Style="{StaticResource Indicator}" />
+                            Росреестр<LineBreak />
+
+                            <TextBlock Style="{StaticResource Contact_phones}">
+                                8 (800) 100 3434<LineBreak />
+
+                                <Hyperlink>
+                                    Отправить заявку
+                                </Hyperlink>
+                            </TextBlock>
+                        </TextBlock>
+                    </Grid>
+
+                    <!--  Триасофт  -->
+                    <Grid Style="{StaticResource Contact_block}">
+                        <TextBlock Style="{StaticResource Contact_heading}">
+                            <Image Style="{StaticResource Indicator}" />
+                            «Триасофт»<LineBreak />
+
+                            <TextBlock Style="{StaticResource Contact_phones}">
+                                8 (804) 333-0050, +7 (495) 651-9042<LineBreak />
+
+                                <TextBlock>support@triasoft.ru</TextBlock>
+                            </TextBlock>
+                        </TextBlock>
+                    </Grid>
+
+                    <!--  Табеллион  -->
+                    <Grid Style="{StaticResource Contact_block}">
+                        <TextBlock Style="{StaticResource Contact_heading}">
+                            <Image Style="{StaticResource Indicator}" />
+                            «Табеллион»<LineBreak />
+
+                            <TextBlock Style="{StaticResource Contact_phones}">
+                                8 (800) 555 2161<LineBreak />
+
+                                <TextBlock>help@tabellion.ru</TextBlock>
+                                , info@tabellion.ru
+                            </TextBlock>
+                        </TextBlock>
+                    </Grid>
+
+                    <!--  Нотариат  -->
+                    <Grid Style="{StaticResource Contact_block}">
+                        <TextBlock Style="{StaticResource Contact_heading}">
+                            <Image Style="{StaticResource Indicator}" />
+                            «Нотариат»<LineBreak />
+
+                            <TextBlock Style="{StaticResource Contact_phones}">
+                                8 (800) 707 3415<LineBreak />
+
+                                <TextBlock>support@notariatsoft.ru</TextBlock>
+                            </TextBlock>
+                        </TextBlock>
+                    </Grid>
+
+                    <StackPanel Style="{StaticResource Info}">
+                        <TextBlock Text="Разработчик: Ситников Виталий" />
+                        <TextBlock Text="Тестировщик: Грачёв Сергей" />
+                    </StackPanel>
+
+                    <!--  Палата  -->
+                    <Grid Style="{StaticResource Contact_block}" Visibility="Collapsed">
+                        <TextBlock Style="{StaticResource Contact_heading}">
+                            <Image Style="{StaticResource Indicator}" />
+                            Региональная палата<LineBreak />
+
+                            <TextBlock Style="{StaticResource Contact_phones}">
+                                +7 (343) 204 7213<LineBreak />
+
+                                <TextBlock>it@npso66.ru</TextBlock>
+                            </TextBlock>
+                        </TextBlock>
+                        <!--    -->
+                    </Grid>
+                </DockPanel>
+                <!-- </ScrollViewer> -->
+            </Grid>
+
+            <!--  ПРАВАЯ ЧАСТЬ КОНТЕНТА (Форма обратной связи / Настройки)  -->
+            <Grid DockPanel.Dock="Right">
+                <!--  Верхний отступ в форме  -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85*" />
+                    <RowDefinition Height="533*" />
+                </Grid.RowDefinitions>
+
+                <!--  Заголовок - Обратная связь  -->
+                <local:OutlinedTextBlock
+                    x:Name="Header_mailform"
+                    Fill="White"
+                    Stroke="Black"
+                    Text="ОБРАТНАЯ СВЯЗЬ" />
+                <local:OutlinedTextBlock
+                    x:Name="Header_configform"
+                    Fill="White"
+                    Stroke="Black"
+                    Text="НАСТРОЙКИ ПОЧТЫ"
+                    Visibility="Collapsed" />
+
+                <DockPanel
+                    x:Name="SendingAnimation"
+                    Grid.Row="1"
+                    Visibility="Collapsed">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <local:OutlinedTextBlock
+                            Fill="White"
+                            Stroke="Black"
+                            Text="ОТПРАВКА СООБЩЕНИЯ" />
+                        <local:OutlinedTextBlock
+                            Fill="White"
+                            Stroke="Black"
+                            Text="ПОДОЖДИТЕ..." />
+                        <!-- <Image gif:AnimationBehavior.SourceUri="Resources/SendingMessage.gif" Height="200" Width="200" Opacity="0.8" /> -->
+                    </StackPanel>
+                </DockPanel>
+
+                <Grid
+                    x:Name="RosreestrURL"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Bottom"
+                    Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <WebBrowser
+                        x:Name="webBrowser1"
+                        Grid.RowSpan="2"
+                        LoadCompleted="WebBrowser1_LoadCompleted"
+                        Navigating="WebBrowser_Navigating" />
+                    <Popup
+                        x:Name="close_min"
+                        AllowsTransparency="True"
+                        HorizontalOffset="545"
+                        IsOpen="False"
+                        Placement="Bottom"
+                        PlacementTarget="{Binding ElementName=ConfigForm}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--  КНОПКА СВЕРНУТЬ  -->
+                            <Button
+                                Margin="0,10,5,0"
+                                Click="MinButton_Click"
+                                Style="{StaticResource VS2012WindowStyleTitleBarButton}">
+                                <Grid MaxWidth="9" MaxHeight="9">
+                                    <Path Data="M0,8 H8 M0,7 H8 M0,6 H8" />
+                                </Grid>
+                            </Button>
+                            <!--  КНОПКА ЗАКРЫТЬ  -->
+                            <Button
+                                Margin="0,10,10,0"
+                                Click="CloseButton_Click"
+                                Style="{StaticResource VS2012WindowStyleTitleBarButton}">
+                                <Grid MaxWidth="9" MaxHeight="9">
+                                    <Path Data="M0,0 L8,8 M0,8 L8,0" />
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Popup>
+                </Grid>
+
+                <!--  Тело - Настройки  -->
+                <DockPanel
+                    x:Name="ConfigForm"
+                    Style="{StaticResource Form}"
+                    Visibility="Collapsed">
+
+                    <!--  ФИО  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Контактное лицо
+                        </local:OutlinedTextBlock>
+                        <TextBox x:Name="Config_fio" Text="{local:SettingBinding FIO}" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Телефон для связи
+                        </local:OutlinedTextBlock>
+                        <xctk:MaskedTextBox
+                            x:Name="Config_phone"
+                            Margin="40,0"
+                            AutoSelectBehavior="OnFocus"
+                            CaretIndex="3"
+                            Mask="+7-00000-00000"
+                            Opacity="0.8"
+                            Text="{local:SettingBinding Phone}" />
+                    </StackPanel>
+
+                    <!--  Электронная почта  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Электронная почта
+                        </local:OutlinedTextBlock>
+                        <TextBox
+                            x:Name="Config_mail"
+                            LostFocus="Config_mail_LostFocus"
+                            Text="{local:SettingBinding Mail}"
+                            TextChanged="Config_mail_TextChanged" />
+                    </StackPanel>
+
+                    <!--  Логин  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Логин
+                        </local:OutlinedTextBlock>
+                        <TextBox x:Name="Config_user" Text="{local:SettingBinding User}" />
+                    </StackPanel>
+
+                    <!--  Пароль  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Пароль
+                        </local:OutlinedTextBlock>
+                        <PasswordBox x:Name="Config_password" PasswordChanged="Config_password_PasswordChanged" />
+                    </StackPanel>
+
+                    <!--  Сервер  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Сервер SMTP (smtp.yandex.ru; smtp.mail.ru; smtp.gmail.com)
+                        </local:OutlinedTextBlock>
+                        <TextBox x:Name="Config_server" Text="{local:SettingBinding Server}" />
+                    </StackPanel>
+
+                    <!--  Порт  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Порт
+                        </local:OutlinedTextBlock>
+                        <TextBox x:Name="Config_port" Text="{local:SettingBinding Port}" />
+                    </StackPanel>
+
+                    <!--  Кнопка продолжить  -->
+
+                    <StackPanel Margin="40,0,40,0" HorizontalAlignment="Right">
+                        <Button Click="BackToMainFormButton_Click" Style="{StaticResource ButtonSendMessage}">
+                            <Label Content="Перейти к отправке сообщения" />
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+
+                <!--  Тело - Форма обратной связи  -->
+                <DockPanel x:Name="MailForm" Style="{StaticResource Form}">
+                    <!--  Критичность  -->
+                    <!--<StackPanel Visibility="Visible">
+                        <local:OutlinedTextBlock>
+                            Уровень критичности
+                        </local:OutlinedTextBlock>
+                        <ComboBox x:Name="Priority">
+                            <ComboBoxItem>
+                                Высокий: Работа остановлена, серьезные технические неполадки
+                            </ComboBoxItem>
+
+                            <ComboBoxItem>
+                                Средний: Работа нарушена, присутствует множество проблем
+                            </ComboBoxItem>
+
+                            <ComboBoxItem IsSelected="true">
+                                Низкий: Работа конторы не нарушена, общие вопросы
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>-->
+
+                    <!--  Категория  -->
+                    <StackPanel>
+                        <local:OutlinedTextBlock>
+                            Категория
+                        </local:OutlinedTextBlock>
+
+                        <StackPanel x:Name="Category_Fond_global" Visibility="Collapsed">
+                            <ComboBox x:Name="Category_Fond" DropDownClosed="Category_Fond_DropDownClosed">
+                                <ComboBoxItem IsSelected="True">
+                                    Сервисы ЕИС еНот
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Сервисы ЕИС 2.0
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Порталы
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Внешние сервисы
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Прочее
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <ComboBox x:Name="Sub_Fond_Enot" Visibility="Collapsed">
+                                <ComboBoxItem>
+                                    Реестр нотариальных действий
+                                </ComboBoxItem>
+
+                                <ComboBoxItem IsSelected="True">
+                                    Запрос на создание сертификата
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Запросы в ЦККИ
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Передача сведений в ФНС
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Запросы в ФМС
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Запросы в ЕГРЮЛ
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Реестр наследственных дел
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Бланки единого образца
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Запросы в Банк
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Запросы в Росреестр
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Обращения в Росреестр
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Печати и подписи
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Комплексная проверка
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Прочее
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Технические вопросы (не относящиеся к конкретному сервису)
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Правовые вопросы (не относящиеся к конкретному сервису)
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <ComboBox x:Name="Sub_Fond_EIS" Visibility="Collapsed">
+                                <ComboBoxItem>
+                                    РУЗДИ
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Квалификационный экзамен
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    База данных завещаний
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Взаимодействие с ФНС
+                                </ComboBoxItem>
+
+                                <ComboBoxItem IsSelected="True">
+                                    ЖПП
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Справочники нотариата
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Стат. отчет
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Корпоративная почта
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Технические вопросы (не относящиеся к конкретному сервису)
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Правовые вопросы (не относящиеся к конкретному сервису)
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <ComboBox x:Name="Sub_Fond_services" Visibility="Collapsed">
+                                <ComboBoxItem>
+                                    http://reestr-dover.ru
+                                </ComboBoxItem>
+
+                                <ComboBoxItem IsSelected="True">
+                                    https://www.reestr-zalogov.ru
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    https://ruzdiportal.eisnot.ru
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <ComboBox x:Name="Sub_Fond_outside_services" Visibility="Collapsed">
+                                <ComboBoxItem IsSelected="True">
+                                    Росреестр
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    ФНС
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <ComboBox x:Name="Sub_Fond_other" Visibility="Collapsed">
+                                <ComboBoxItem IsSelected="True">
+                                    Прочее
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel x:Name="Category_Triasoft_global" Visibility="Collapsed">
+                            <ComboBox x:Name="Category_Triasoft">
+                                <ComboBoxItem>
+                                    Инфонот
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Экспресс
+                                </ComboBoxItem>
+
+                                <ComboBoxItem IsSelected="True">
+                                    Иные вопросы
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel x:Name="Category_Tabellion_global" Visibility="Collapsed">
+                            <ComboBox x:Name="Category_Tabellion">
+                                <ComboBoxItem IsSelected="True">
+                                    Общие вопросы
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Проблемы
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Приобретение
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel x:Name="Category_Notariat_global" Visibility="Collapsed">
+                            <ComboBox x:Name="Category_Notariat">
+                                <ComboBoxItem IsSelected="True">
+                                    Общие вопросы
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Проблемы
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Приобретение
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel x:Name="Category_Palata_global" Visibility="Collapsed">
+                            <ComboBox x:Name="Category_Palata">
+                                <ComboBoxItem IsSelected="True">
+                                    Иное
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Енот
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Электронная подпись
+                                </ComboBoxItem>
+
+                                <ComboBoxItem>
+                                    Федеральные ресурсы
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--  Описание проблемы + Кнопка отправить  -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="380*" />
+                            <RowDefinition Height="38*" />
+                            <RowDefinition Height="121*" />
+                        </Grid.RowDefinitions>
+
+                        <local:OutlinedTextBlock Margin="20,0,0,15">
+                            Описание проблемы
+                        </local:OutlinedTextBlock>
+
+                        <RichTextBox x:Name="Problem" Margin="40,22,40,20" />
+
+                        <DockPanel
+                            Grid.Row="1"
+                            Grid.RowSpan="2"
+                            Margin="40,0,40,0.2">
+                            <Button Click="SettingsButton_Click" Style="{StaticResource ButtonConfig}">
+                                <Label Content="Настройки почты" />
+                            </Button>
+
+                            <Button Click="ButtonScreenshot_Click" Style="{StaticResource ButtonScreenshot}">
+                                <Label Content="Сделать скриншот" />
+                            </Button>
+
+                            <Button Click="SendButton_Click" Style="{StaticResource ButtonSendMessage}">
+                                <Label Content="ОТПРАВИТЬ СООБЩЕНИЕ" />
+                            </Button>
+                        </DockPanel>
+
+                        <StackPanel Style="{StaticResource FileAttachment}">
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button
+                                    x:Name="ButtonAttachment_1"
+                                    VerticalAlignment="Center"
+                                    Click="ButtonAttachment_Click"
+                                    Content=" Добавить файл "
+                                    Style="{StaticResource ButtonBrowseFile}" />
+                                <Label Content="{Binding Path=FileAttachment_1}" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button
+                                    x:Name="ButtonAttachment_2"
+                                    VerticalAlignment="Center"
+                                    Click="ButtonAttachment_Click"
+                                    Content=" Добавить файл "
+                                    Style="{StaticResource ButtonBrowseFile}" />
+                                <Label Content="{Binding Path=FileAttachment_2}" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button
+                                    x:Name="ButtonAttachment_3"
+                                    VerticalAlignment="Center"
+                                    Click="ButtonAttachment_Click"
+                                    Content=" Добавить файл "
+                                    Style="{StaticResource ButtonBrowseFile}" />
+                                <Label Content="{Binding Path=FileAttachment_3}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
